@@ -1,4 +1,9 @@
-
+body {
+    background-color: #5f0b46;
+    margin: 0;
+    padding: 0;
+  }
+  
 
 .container{
     width:40%;
