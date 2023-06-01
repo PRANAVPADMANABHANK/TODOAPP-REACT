@@ -13,22 +13,45 @@ function Todo() {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+  ///old code///
+
+  // const addTodo = () => {
+  //  if(todo !== ""){
+  //   setTodos([...todos,{list: todo, id : Date.now(), status:false}]);
+  //   console.log(todos); // here todos is the array. so that values should map here.
+  //   setTodo("");
+  //  }
+  //  if(editId){
+  //   const editTodo = todos.find((todo)=>todo.id === editId)
+  //   const updateTodo = todos.map((to)=>to.id === editTodo.id
+  //   ?(to = {id : to.id , list : todo})
+  //   :(to = {id : to.id , list : to.list}))
+  //   setTodos(updateTodo)
+  //   setEditID(0);
+  //   setTodo('')
+  //  }
+  // };
+
+  ///old code///
+
+  //updated code////
+
   const addTodo = () => {
-   if(todo !== ""){
-    setTodos([...todos,{list: todo, id : Date.now(), status:false}]);
-    console.log(todos); // here todos is the array. so that values should map here.
-    setTodo("");
-   }
-   if(editId){
-    const editTodo = todos.find((todo)=>todo.id === editId)
-    const updateTodo = todos.map((to)=>to.id === editTodo.id
-    ?(to = {id : to.id , list : todo})
-    :(to = {id : to.id , list : to.list}))
-    setTodos(updateTodo)
-    setEditID(0);
-    setTodo('')
-   }
+    if (todo !== "") {
+      if (editId) {
+        const updatedTodos = todos.map((to) =>
+          to.id === editId ? { ...to, list: todo } : to
+        );
+        setTodos(updatedTodos);
+        setEditID(0);
+      } else {
+        setTodos([...todos, { list: todo, id: Date.now(), status: false }]);
+      }
+      setTodo("");
+    }
   };
+  
+  //updated code////
 
   const inputRef = useRef("null");
 
